@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./styles.css">
+        <title>Dome</title>
+        <link rel="icon" href="icon.png" type="image/png">
+    </head> 
+    <body>
+        <div class="container">
+            <div >
+                <h1 class = "header_text">Quieres ver Your Name conmigo? ☕</h1>
+            </div>
+            <div class="gif_container">
+                <img src="ask.gif" alt="Cute animated illustration">
+            </div>
+            <div class = "buttons">
+                <button class="btn" id = "yesButton" onclick="nextPage()">Yes</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
+                <script>
+                    function nextPage() {
+                        window.location.href = "yes.html";
+                    }
+                    
+                    function moveButton() {
+                        var button = document.getElementById('noButton');
+                        var buttonWidth = button.offsetWidth;
+                        var buttonHeight = button.offsetHeight;
+                
+                        // Asegurarse de que el botón no se mueva fuera de la pantalla
+                        var maxX = window.innerWidth - buttonWidth;
+                        var maxY = window.innerHeight - buttonHeight;
+                
+                        // Calcular una nueva posición aleatoria dentro del área visible
+                        var x = Math.random() * maxX;
+                        var y = Math.random() * maxY;
+                
+                        // Asignar la nueva posición al botón
+                        button.style.position = 'absolute'; // Asegúrate de que el botón tiene una posición absoluta
+                        button.style.left = `${x}px`;
+                        button.style.top = `${y}px`;
+                    }
+                
+                    // Llama a la función moveButton cuando el contenido de la página haya terminado de cargarse
+                    window.onload = function() {
+                        moveButton();
+                    }
+                </script>
+                
+            </div>
+        </div>
+       
+    </body> 
+</html>
